@@ -35,7 +35,9 @@ const functions = {
     logout: async (page) => {
         console.log(tabChar, "Logging out");
         await page.goto(baseUrl + '/logout');
-    }
+    },
+
+    tabChar: tabChar,
 }
 
 

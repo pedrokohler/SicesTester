@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const puppeteer = require('puppeteer');
 const login = require('./services/login');
+const coupon = require('./services/coupon');
 
 const masterUsername = process.env.MASTER_USERNAME;
 const masterPassword = process.env.MASTER_PASSWORD;
@@ -9,6 +10,8 @@ const masterPassword = process.env.MASTER_PASSWORD;
 (async () => {
     const browser = await puppeteer.launch();
     const page = await login.sucessfulLogin(browser, masterUsername, masterPassword);
+
+    await coupon.create(page);
 
     await login.logout(page);
     await page.close();

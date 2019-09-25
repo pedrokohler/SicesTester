@@ -1,6 +1,6 @@
-const { openMainPage, clearInputField, logout } = require('./common');
-const tabChar = "   ";
+require('dotenv').config();
 
+const { openMainPage, clearInputField, logout, tabChar } = require('./common');
 
 module.exports = {
     sucessfulLogin: async (browser, username, password) => {
@@ -43,6 +43,6 @@ module.exports = {
     logout: async (page) => {
         console.log("Testing a logout");
         await logout(page);
-    }
+    },
 
 }
