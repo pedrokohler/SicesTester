@@ -1,14 +1,15 @@
 require('dotenv').config();
-const rootUrl = process.env.BASE_URL;
+const baseUrl = process.env.BASE_URL;
+const tabChar = "   ";
 
 const functions = {
     openMainPage: async (browser) => {
 
-        console.log("Opening new page");
+        console.log(tabChar, "Opening new page");
         const page = await browser.newPage();
-        console.log("Going to", rootUrl);
-        await page.goto(rootUrl);
-        console.log("Setting default viewport");
+        console.log(tabChar, "Going to", baseUrl);
+        await page.goto(baseUrl);
+        console.log(tabChar, "Setting default viewport");
         await functions.setDefaultViewport(page);
 
         return page;
@@ -23,13 +24,18 @@ const functions = {
     },
 
     clearInputField: async (page) => {
-        console.log("Clearing input field")
+        console.log(tabChar, "Clearing input field")
         await page.keyboard.down('Control');
         await page.keyboard.press('KeyA');
         await page.keyboard.up('Control');
         await page.keyboard.press('Backspace');
 
     },
+
+    logout: async (page) => {
+        console.log(tabChar, "Logging out");
+        await page.goto(baseUrl + '/logout');
+    }
 }
 
 

@@ -1,7 +1,5 @@
-require('dotenv').config();
-
-const { openMainPage, clearInputField } = require('./common');
-const baseUrl = process.env.BASE_URL;
+const { openMainPage, clearInputField, logout } = require('./common');
+const tabChar = "   ";
 
 
 module.exports = {
@@ -15,11 +13,11 @@ module.exports = {
         await page.focus('#password');
         await clearInputField(page);
         await page.keyboard.type(password);
-        console.log("Submitting form");
+        console.log(tabChar, "Submitting form");
         await page.$eval('form', form => form.submit());
-        console.log("Waiting for network to be idle");
+        console.log(tabChar, "Waiting for network to be idle");
         await page.waitForNavigation({ waitUntil: 'networkidle0' });
-        console.log("Taking screenshot");
+        console.log(tabChar, "Taking screenshot");
         await page.screenshot({ path: 'results/dashboard.png' });
 
         return page;
@@ -34,17 +32,17 @@ module.exports = {
         await page.focus('#password');
         await clearInputField(page);
         await page.keyboard.type('wrongpassword');
-        console.log("Submitting form");
+        console.log(tabChar, "Submitting form");
         await page.$eval('form', form => form.submit());
-        console.log("Taking screenshot");
+        console.log(tabChar, "Taking screenshot");
         await page.screenshot({ path: 'results/login-fail.png' });
-        console.log("Closing page");
+        console.log(tabChar, "Closing page");
         await page.close();
     },
 
     logout: async (page) => {
-        console.log("Logging out");
-        await page.goto(baseUrl + '/logout');
+        console.log("Testing a logout");
+        await logout(page);
     }
 
 }
