@@ -1,5 +1,5 @@
 # Sices Tester
-Sices Tester is a testing software for the legacy Sices Solar Application
+Sices Tester is an automated tests software for the legacy Sices Solar Application
 
 ## Installation
 ```bash
