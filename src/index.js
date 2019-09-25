@@ -8,6 +8,10 @@ const masterPassword = process.env.MASTER_PASSWORD;
 
 (async () => {
     const browser = await puppeteer.launch();
-    await login(browser, masterUsername, masterPassword);
+    const page = await login.sucessfulLogin(browser, masterUsername, masterPassword);
+
+    await login.logout(page);
+    await page.close();
+    await login.unsucessfulLogin(browser);
     await browser.close();
 })();
