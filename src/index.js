@@ -11,7 +11,7 @@ const masterPassword = process.env.MASTER_PASSWORD;
     const browser = await puppeteer.launch();
     const page = await login.sucessfulLogin(browser, masterUsername, masterPassword);
 
-    await coupon.create(page);
+    await coupon.test(page);
 
     await login.logout(page);
     await page.close();

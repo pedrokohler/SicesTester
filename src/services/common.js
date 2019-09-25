@@ -37,6 +37,11 @@ const functions = {
         await page.goto(baseUrl + '/logout');
     },
 
+    reloadPage: async(page) =>{        
+        console.log(tabChar, "Reloading page");
+        await page.reload({waitUntil: "networkidle0"});
+    },
+
     tabChar: tabChar,
 }
 
