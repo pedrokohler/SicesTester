@@ -4,10 +4,14 @@ const tabChar = "   ";
 
 const functions = {
     openMainPage: async (browser) => {
-
-        console.log(tabChar, "Opening new page");
+        
+        const pageOpeningLog = tabChar + " Opening new page";
+        console.log(pageOpeningLog.blue);
         const page = await browser.newPage();
-        console.log(tabChar, "Going to", baseUrl);
+
+        const redirectLog = tabChar + " Going to" + " " + baseUrl;
+        console.log(redirectLog.blue);
+
         await page.goto(baseUrl);
         console.log(tabChar, "Setting default viewport");
         await functions.setDefaultViewport(page);
