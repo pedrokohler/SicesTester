@@ -8,9 +8,14 @@ mkdir results, results/coupon
 ```
 ### Env file
 After that create a .env file with the following variables
+
+```
 BASE_URL
 MASTER_USERNAME
 MASTER_PASSWORD
+INTEGRADOR_USERNAME
+INTEGRADOR_PASSWORD
+```
 
 ## Usage
 ### Running
