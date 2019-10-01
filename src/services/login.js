@@ -28,7 +28,7 @@ const functions = {
 
         return page;
     },
-    
+
     unsucessfulLogin: async (browser) => {
         console.log("Testing an unsucessful login".green);
         const page = await openMainPage(browser);
@@ -70,6 +70,6 @@ const functions = {
         await logout(page);
     },
 
-}
+};
 
 module.exports = functions;

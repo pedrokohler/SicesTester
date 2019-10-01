@@ -1,6 +1,8 @@
 require('dotenv').config();
-const baseUrl = process.env.BASE_URL;
+
 const tabChar = "   ";
+const baseUrl = process.env.BASE_URL;
+
 
 const functions = {
     openMainPage: async (browser) => {
@@ -9,10 +11,8 @@ const functions = {
         console.log(pageOpeningLog.blue);
         const page = await browser.newPage();
 
-        const redirectLog = tabChar + " Going to" + " " + baseUrl;
-        console.log(redirectLog.blue);
+        await functions.goto(page, '');
 
-        await page.goto(baseUrl);
         console.log(tabChar, "Setting default viewport");
         await functions.setDefaultViewport(page);
 
@@ -38,7 +38,7 @@ const functions = {
 
     logout: async (page) => {
         console.log(tabChar, "Logging out");
-        await page.goto(baseUrl + '/logout');
+        await functions.goto(page, '/logout');
     },
 
     reloadPage: async(page) =>{        
@@ -46,8 +46,17 @@ const functions = {
         await page.reload({waitUntil: "networkidle0"});
     },
 
+    goto: async (page, path) => {
+        
+        const mainUrl = baseUrl + path;
+        const redirectLog = tabChar + " Going to" + " " + mainUrl;
+        console.log(redirectLog.blue);
+
+        await page.goto(mainUrl, {waitUntil: 'networkidle0'});
+    },
+
     tabChar: tabChar,
-}
+};
 
 
 module.exports = functions;

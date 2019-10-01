@@ -4,7 +4,7 @@ Sices Tester is an automated tests software for the legacy Sices Solar Applicati
 ## Installation
 ```bash
 yarn install
-mkdir results, results/coupon
+mkdir results, results/coupon, results/order, results/generator
 ```
 ### Env file
 After that create a .env file with the following variables

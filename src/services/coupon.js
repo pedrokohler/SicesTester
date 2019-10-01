@@ -1,18 +1,13 @@
-require('dotenv').config();
 require('colors');
 
-const { clearInputField, tabChar, reloadPage } = require('./common');
-const baseUrl = process.env.BASE_URL;
+const { clearInputField, tabChar, reloadPage, goto: goTo } = require('./common');
 
 const functions = {
 
     test: async (page) =>{
         console.log("Testing coupon".green);
-
-        const redirectLog = tabChar + " Going to" + " " + baseUrl + '/coupon';
-        console.log(redirectLog.blue);
-
-        await page.goto(baseUrl + '/coupon', {waitUntil: 'networkidle0'});
+        
+        await goTo(page, '/coupon');
 
         const testCode = new Date().getTime()
         const originalCoupons = [
@@ -199,6 +194,6 @@ const functions = {
         await page.keyboard.press("Enter");
 
     },
-}
+};
 
 module.exports = functions;
